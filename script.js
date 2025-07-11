@@ -3,20 +3,21 @@ jQuery(document).ready(function($) {
     let currentSlide = 0;
     let cardsPerView = 3; // Número de cards visíveis por vez
     let cardWidth = 350; // Largura do card + gap
-    let gap = 30;
+    let gap = 35;
+    let spaceGap = 25; // Espaçamento entre os cards
     
     // Função para calcular cards por view baseado na largura da tela
     function updateCardsPerView() {
         const containerWidth = $('.gre-slider-container').width();
         if (containerWidth < 768) {
             cardsPerView = 1;
-            cardWidth = 280 + gap;
+            cardWidth = 280 + gap + spaceGap;
         } else if (containerWidth < 1200) {
             cardsPerView = 2;
-            cardWidth = 320 + gap;
+            cardWidth = 320 + gap + spaceGap;
         } else {
             cardsPerView = 3;
-            cardWidth = 350 + gap;
+            cardWidth = 350 + gap + spaceGap;
         }
     }
     

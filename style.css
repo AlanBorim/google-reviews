@@ -1,10 +1,9 @@
 .gre-container .gre-blue-frame {
-    background: linear-gradient(135deg, #3b4cb8 0%, #4a5bc4 100%);
-    border-radius: 20px;
-    padding: 60px 40px 120px;
-    position: relative;
-    width: 90%;
-    max-width: 1100px;
+    
+    padding: 10px 70px 120px;
+    position: absolute;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     z-index: 1;
 }
@@ -14,17 +13,16 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 50px;
+    margin: 50px 50px 10px 0px;
 }
 
 .gre-container .gre-title {
-    color: white;
-    font-size: 48px;
-    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin: 0;
-    font-family: inherit;
+    font-family: 'ExtendaTTF';
+    font-weight: 100;
+    font-size: 64px;
 }
 
 .gre-container .gre-navigation {
@@ -33,9 +31,8 @@
 }
 
 .gre-container .gre-nav-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0);
     width: 50px;
     height: 50px;
     display: flex;
@@ -44,14 +41,15 @@
     cursor: pointer;
     transition: all 0.3s ease;
     color: white;
-    font-size: 24px;
+    font-size: 75px;
     line-height: 1;
 }
 
 .gre-container .gre-nav-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
     transform: translateY(-2px);
+    color: #D1CC51;
 }
 
 .gre-container .gre-nav-btn:disabled {
@@ -61,6 +59,12 @@
 }
 
 /* Container do slider que se estende para fora do quadro azul */
+.gre-container .gre-slider-wrapper {
+    justify-items: center;
+    background-color: #1B199F;
+    border-radius: 25px;
+}
+
 .gre-container .gre-slider-container {
     width: 100%;
     max-width: 1200px;
@@ -69,21 +73,22 @@
     z-index: 2;
     margin-top: 0px;
     top: 160px;
+    height: 490px;
 }
 
 .gre-container .gre-slider {
     display: flex;
-    gap: 30px;
+    gap: 35px;
     transition: transform 0.3s ease;
     width: fit-content;
-    padding: 0 50px; /* Espaçamento lateral para centralizar */
+    padding: 0 50px;
 }
 
 .gre-container .gre-card {
     background: white;
     border-radius: 20px;
     padding: 50px 30px 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.15);
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     min-height: 420px;
@@ -92,11 +97,12 @@
     text-align: left;
     width: 350px;
     flex-shrink: 0;
+    top: 40px;
 }
 
 .gre-container .gre-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Avatar mais destacado conforme imagem modelo */
@@ -212,7 +218,7 @@
     .gre-container .gre-card {
         width: 320px;
     }
-    
+
     .gre-container .gre-blue-frame {
         width: 95%;
         padding: 50px 30px 100px;
@@ -224,22 +230,22 @@
         padding: 40px 20px 80px;
         width: 98%;
     }
-    
+
     .gre-container .gre-title {
         font-size: 36px;
     }
-    
+
     .gre-container .gre-header {
         flex-direction: column;
         gap: 30px;
         text-align: center;
     }
-    
+
     .gre-container .gre-card {
         width: 280px;
         margin-top: 25px;
     }
-    
+
     .gre-container .gre-slider {
         padding: 0 20px;
     }
@@ -250,21 +256,21 @@
         font-size: 28px;
         letter-spacing: 1px;
     }
-    
+
     .gre-container .gre-card {
         width: 260px;
         padding: 45px 25px 25px;
         min-height: 350px;
     }
-    
+
     .gre-container .gre-text {
         font-size: 15px;
     }
-    
+
     .gre-container .gre-blue-frame {
         padding: 30px 15px 60px;
     }
-    
+
     .gre-container .gre-slider-container {
         margin-top: -40px;
     }

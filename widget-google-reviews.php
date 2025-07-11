@@ -191,6 +191,7 @@ class GRE_Google_Reviews_Widget extends \Elementor\Widget_Base
         echo '</div>'; // .gre-blue-frame
         
         // Container do slider que se estende para fora do quadro azul
+        echo '<div class="gre-slider-wrapper">';
         echo '<div class="gre-slider-container">';
         echo '<div class="gre-slider">';
         
@@ -219,6 +220,7 @@ class GRE_Google_Reviews_Widget extends \Elementor\Widget_Base
         
         echo '</div>'; // .gre-slider
         echo '</div>'; // .gre-slider-container
+        echo '</div>'; // .gre-slider-wrapper
         
         // Indicadores (se habilitados)
         if ($settings['show_indicators'] === 'yes') {
