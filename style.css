@@ -90,7 +90,7 @@
     padding: 50px 30px 30px;
     box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.15);
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
     min-height: 420px;
     display: flex;
     flex-direction: column;
@@ -98,11 +98,19 @@
     width: 350px;
     flex-shrink: 0;
     top: 40px;
+    overflow: visible;
 }
 
 .gre-container .gre-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Classe para card expandido */
+.gre-container .gre-card.expanded {
+    height: auto;
+    max-height: 600px;
+    overflow: visible;
 }
 
 /* Avatar mais destacado conforme imagem modelo */
@@ -140,6 +148,47 @@
     flex: 1;
     margin-top: 35px;
     margin-bottom: 25px;
+    position: relative;
+}
+
+/* Container do texto com altura fixa */
+.gre-container .gre-text-container {
+    position: relative;
+    height: 120px; /* Altura fixa para todos os cards */
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+/* Container expandido com barra de rolagem */
+.gre-container .gre-text-container.expanded {
+    height: 200px; /* Altura expandida */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Estilo da barra de rolagem */
+.gre-container .gre-text-container.expanded::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gre-container .gre-text-container.expanded::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.gre-container .gre-text-container.expanded::-webkit-scrollbar-thumb {
+    background: #3b4cb8;
+    border-radius: 3px;
+}
+
+.gre-container .gre-text-container.expanded::-webkit-scrollbar-thumb:hover {
+    background: #2a3a9f;
+}
+
+/* Para Firefox */
+.gre-container .gre-text-container.expanded {
+    scrollbar-width: thin;
+    scrollbar-color: #3b4cb8 #f1f1f1;
 }
 
 .gre-container .gre-text {
@@ -150,6 +199,20 @@
     text-align: center;
     font-style: normal;
     padding: 0 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Gradiente de fade para texto truncado */
+.gre-container .gre-text-container:not(.expanded)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(transparent, white);
+    pointer-events: none;
 }
 
 .gre-container .gre-more {
@@ -161,6 +224,8 @@
     display: block;
     text-align: center;
     margin-bottom: 0;
+    cursor: pointer;
+    user-select: none;
 }
 
 .gre-container .gre-more:hover {
@@ -249,6 +314,15 @@
     .gre-container .gre-slider {
         padding: 0 20px;
     }
+
+    /* Ajustes para mobile */
+    .gre-container .gre-text-container {
+        height: 100px;
+    }
+
+    .gre-container .gre-text-container.expanded {
+        height: 180px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -274,9 +348,19 @@
     .gre-container .gre-slider-container {
         margin-top: -40px;
     }
+
+    /* Ajustes para mobile pequeno */
+    .gre-container .gre-text-container {
+        height: 90px;
+    }
+
+    .gre-container .gre-text-container.expanded {
+        height: 160px;
+    }
 }
 
 /* Ocultar grid quando usar slider */
 .gre-container .gre-testimonials-grid {
     display: none;
 }
+

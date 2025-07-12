@@ -208,7 +208,10 @@ class GRE_Google_Reviews_Widget extends \Elementor\Widget_Base
             }
             echo '</div>';
             echo '<div class="gre-testimonial-content">';
+            // Nova estrutura com container de altura fixa
+            echo '<div class="gre-text-container">';
             echo '<div class="gre-text">' . esc_html($review['text']) . '</div>';
+            echo '</div>';
             echo '<a href="#" class="gre-more">Leia mais</a>';
             echo '</div>';
             echo '<div class="gre-author-info">';
@@ -242,3 +245,4 @@ class GRE_Google_Reviews_Widget extends \Elementor\Widget_Base
         }
     }
 }
+

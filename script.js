@@ -77,6 +77,32 @@ jQuery(document).ready(function($) {
         updateSliderPosition();
     }
     
+    // NOVA FUNCIONALIDADE: Expandir/Contrair depoimentos
+    function toggleTestimonial(card) {
+        const textContainer = card.find('.gre-text-container');
+        const moreLink = card.find('.gre-more');
+        const isExpanded = textContainer.hasClass('expanded');
+        
+        if (isExpanded) {
+            // Contrair
+            textContainer.removeClass('expanded');
+            card.removeClass('expanded');
+            moreLink.text('Leia mais');
+        } else {
+            // Expandir
+            textContainer.addClass('expanded');
+            card.addClass('expanded');
+            moreLink.text('Fechar');
+        }
+    }
+    
+    // Event listener para o link "Leia mais"/"Fechar"
+    $(document).on('click', '.gre-more', function(e) {
+        e.preventDefault();
+        const card = $(this).closest('.gre-card');
+        toggleTestimonial(card);
+    });
+    
     // Event listeners para os botões de navegação
     $(document).on('click', '.gre-next', function(e) {
         e.preventDefault();
@@ -136,11 +162,28 @@ jQuery(document).ready(function($) {
         }
     }
     
+    // Função para inicializar a estrutura dos depoimentos
+    function initTestimonialStructure() {
+        $('.gre-card').each(function() {
+            const card = $(this);
+            const textElement = card.find('.gre-text');
+            
+            // Verificar se já foi inicializado
+            if (card.find('.gre-text-container').length === 0) {
+                // Envolver o texto em um container com altura fixa
+                textElement.wrap('<div class="gre-text-container"></div>');
+            }
+        });
+    }
+    
     // Inicialização e responsividade
     function initSlider() {
         updateCardsPerView();
         currentSlide = 0;
         updateSliderPosition();
+        
+        // Inicializar estrutura dos depoimentos
+        initTestimonialStructure();
         
         // Criar indicadores se não existirem
         createIndicators();
@@ -170,6 +213,9 @@ jQuery(document).ready(function($) {
         updateCardsPerView();
         updateSliderPosition();
         createIndicators();
+        
+        // Reinicializar estrutura se necessário
+        initTestimonialStructure();
     });
     
     // Auto-play (opcional - pode ser ativado se necessário)
@@ -215,5 +261,8 @@ jQuery(document).ready(function($) {
             setTimeout(initSlider, 100);
         }
     });
+    
+    // Expor função startAutoplay globalmente para compatibilidade
+    window.startAutoplay = startAutoplay;
 });
 
